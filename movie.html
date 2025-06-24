@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch latest movies in HD quality with dual audio (Hindi Dubbed) on MovieHDDub. Stream free movies online with English subtitles.">
+    <meta name="keywords" content="moviehdub, hd movies, hindi dubbed movies, free movies online, streaming movies">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="MovieHDDub - Free HD Movies Streaming">
+    <meta property="og:description" content="Watch latest movies in HD quality with Hindi dubbing">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://moviehdub.example.com">
+    <title>MovieHDDub - Watch HD Movies Online | Hindi Dubbed Movies</title>
+    <link rel="canonical" href="https://moviehdub.example.com">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #e50914;
+            --secondary: #b00710;
+            --dark: #141414;
+            --light: #f5f5f5;
+            --gray: #808080;
+            --dark-gray: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            padding: 1rem 5%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        header.scrolled {
+            background-color: var(--dark);
+        }
+        
+        .logo {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--light);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box input {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255,255,255,0.2);
+            color: var(--light);
+            outline: none;
+        }
+        
+        /* Hero Banner */
+        .hero {
+            height: 80vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: var(--light);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(109, 109, 110, 0.4);
+        }
+        
+        /* Movie Sections */
+        .section {
+            padding: 3rem 5%;
+        }
+        
+        .section-title {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title h2 {
+            font-size: 1.5rem;
+        }
+        
+        .section-title a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .movie-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .movie-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .movie-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .movie-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+        }
+        
+        .movie-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .movie-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        /* Ad Container */
+        .ad-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: var(--dark-gray);
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light);
+        }
+        
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .movies-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                height: 50vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .movies-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <a href="/" class="logo">Movie<span>HDDub</span></a>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/movies">Movies</a></li>
+                <li><a href="/tv-shows">TV Shows</a></li>
+                <li><a href="/genres">Genres</a></li>
+                <li><a href="/new-releases">New Releases</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Search movies...">
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero" style="background-image: url('https://via.placeholder.com/1920x1080')">
+        <div class="hero-content">
+            <h1>Avengers: Endgame</h1>
+            <p>After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.</p>
+            <div class="hero-buttons">
+                <a href="/watch/avengers-endgame" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Watch Now
+                </a>
+                <a href="/movie/avengers-endgame" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i> More Info
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Ad Banner -->
+    <div class="section">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your AdSense code -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <!-- Trending Movies -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Trending Now</h2>
+            <a href="/trending">View All</a>
+        </div>
+        <div class="movies-grid">
+            <!-- Movie Card 1 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Spider-Man: No Way Home">
+                <div class="movie-info">
+                    <h3>Spider-Man: No Way Home</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 2 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="The Batman">
+                <div class="movie-info">
+                    <h3>The Batman</h3>
+                    <div class="movie-meta">
+                        <span>2022</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 3 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Dune">
+                <div class="movie-info">
+                    <h3>Dune</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>4K</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 4 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="No Time to Die">
+                <div class="movie-info">
+                    <h3>No Time to Die</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 5 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Shang-Chi">
+                <div class="movie-info">
+                    <h3>Shang-Chi</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Middle Ad Banner -->
+    <div class="section">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your AdSense code -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <!-- Hindi Dubbed Movies -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Hindi Dubbed Movies</h2>
+            <a href="/hindi-dubbed">View All</a>
+        </div>
+        <div class="movies-grid">
+            <!-- Movie Card 1 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Fast & Furious 9">
+                <div class="movie-info">
+                    <h3>Fast & Furious 9</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 2 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Jungle Cruise">
+                <div class="movie-info">
+                    <h3>Jungle Cruise</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 3 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Black Widow">
+                <div class="movie-info">
+                    <h3>Black Widow</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 4 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Godzilla vs Kong">
+                <div class="movie-info">
+                    <h3>Godzilla vs Kong</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 5 -->
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/300x450" alt="Mortal Kombat">
+                <div class="movie-info">
+                    <h3>Mortal Kombat</h3>
+                    <div class="movie-meta">
+                        <span>2021</span>
+                        <span>HD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/dmca">DMCA</a>
+            <a href="/disclaimer">Disclaimer</a>
+        </div>
+        <p class="copyright">© 2023 MovieHDDub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Movie data loading (simulated)
+        document.addEventListener('DOMContentLoaded', function() {
+            // In a real implementation, you would fetch movie data from an API
+            console.log('Page loaded - ready to fetch movie data');
+            
+            // Simulate loading popular movies
+            setTimeout(() => {
+                console.log('Popular movies loaded');
+            }, 1000);
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query.length > 0) {
+                    // In a real implementation, you would redirect to search results
+                    console.log('Searching for:', query);
+                    window.location.href = `/search?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+
+        // Initialize AdSense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
