@@ -673,13 +673,110 @@
                     <div class="tool-card-img">
                         <i class="fas fa-compress-alt"></i>
                     </div>
-                    <div class="tool-card-content">
-                        <h3>Image Compressor</h3>
-                        <p>Reduce image file size without losing quality. Perfect for websites and social media.</p>
-                        <a href="/Tool/image-compressor" class="tool-card-btn">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+                   <div class="tool-card">
+    <!-- Option 1: Entire card as hyperlink (with proper z-index handling) -->
+    <a href="/Tool/image-compressor" class="card-link" aria-label="Image Compressor Tool"></a>
+    
+    <div class="tool-card-img">
+        <i class="fas fa-compress-alt"></i>
+    </div>
+    
+    <div class="tool-card-content">
+        <h3>
+            <!-- Option 2: Heading as hyperlink -->
+            <a href="/Tool/image-compressor" class="title-link">Image Compressor</a>
+        </h3>
+        <p>Reduce image file size without losing quality. Perfect for websites and social media.</p>
+        
+        <!-- Option 3: Existing button hyperlink -->
+        <a href="/Tool/image-compressor" class="tool-card-btn">
+            Use Tool <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<style>
+    .tool-card {
+        position: relative;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    
+    .tool-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    /* Option 1: Entire card link */
+    .card-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+    }
+    
+    /* Option 2: Title link */
+    .title-link {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    .title-link:hover {
+        color: var(--primary);
+    }
+    
+    .tool-card-img {
+        height: 160px;
+        background: #f5f7fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 2.5rem;
+    }
+    
+    .tool-card-content {
+        padding: 1.5rem;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .tool-card h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+    }
+    
+    .tool-card p {
+        color: #64748b;
+        margin-bottom: 1.5rem;
+        font-size: 0.9375rem;
+    }
+    
+    .tool-card-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        position: relative;
+        z-index: 3;
+        transition: all 0.2s ease;
+    }
+    
+    .tool-card-btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+    }
+</style>
                 </div>
                 
                 <div class="tool-card animate-fade delay-200">
